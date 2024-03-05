@@ -7,9 +7,20 @@ import {useState} from 'react';
 //import {EXAMPLES} from './data'
 
 function App() {
-  const [ selectedTopic, setSelectedTopic ] = useState('components');
+  const [ selectedTopic, setSelectedTopic ] = useState();
 
-  //let tabContent='Please click a button';
+  let tabContent= <p>Please select a topic</p>;
+  if( selectedTopic ){ 
+    tabContent= <div id='tab-content'>
+    <h3> {EXAMPLES[selectedTopic].title} </h3>
+    <p> {EXAMPLES[selectedTopic].description} </p>
+    <pre>
+      <code>
+      {EXAMPLES[selectedTopic].code}
+      </code>
+    </pre>
+  </div>;
+   }
 
   function handleSelect(selectedButton){
     setSelectedTopic(selectedButton);
@@ -43,7 +54,9 @@ function App() {
           <TabButton onClick={()=>handleSelect('state')}>State</TabButton>
         </menu>
 
-      <div id='tab-content'>
+        {tabContent}
+
+        { /* { !selectedTopic ? <p>Please select a topic</p> : ( <div id='tab-content'>
         <h3> {EXAMPLES[selectedTopic].title} </h3>
         <p> {EXAMPLES[selectedTopic].description} </p>
         <pre>
@@ -51,9 +64,18 @@ function App() {
           {EXAMPLES[selectedTopic].code}
           </code>
         </pre>
-      </div>
+      </div> ) } */ }
 
-        {selectedTopic}
+      { /* { !selectedTopic && <p>Please select a topic</p> }
+      { selectedTopic && ( <div id='tab-content'>
+        <h3> {EXAMPLES[selectedTopic].title} </h3>
+        <p> {EXAMPLES[selectedTopic].description} </p>
+        <pre>
+          <code>
+          {EXAMPLES[selectedTopic].code}
+          </code>
+        </pre>
+      </div> ) } */ }
 
       </section>
     </main>
