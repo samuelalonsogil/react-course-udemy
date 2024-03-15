@@ -10,15 +10,17 @@ export default function ExamplesData(){
 const [ selectedTopic, setSelectedTopic ] = useState();
 
   let tabContent= <p>Please select a topic</p>;
+  
   if( selectedTopic ){ 
-    tabContent= <div id='tab-content'>
-    <h3> {EXAMPLES[selectedTopic].title} </h3>
-    <p> {EXAMPLES[selectedTopic].description} </p>
-    <pre>
-      <code>
-      {EXAMPLES[selectedTopic].code}
-      </code>
-    </pre>
+    tabContent= 
+    <div id='tab-content'>
+      <h3> {EXAMPLES[selectedTopic].title} </h3>
+      <p> {EXAMPLES[selectedTopic].description} </p>
+      <pre>
+        <code>
+        {EXAMPLES[selectedTopic].code}
+        </code>
+      </pre>
   </div>;
    }
 
